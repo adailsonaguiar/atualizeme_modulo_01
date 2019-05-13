@@ -1,4 +1,4 @@
-package atualizador.main;
+package br.com.atualizador;
 
 import java.io.File;
 
@@ -17,7 +17,7 @@ public class Arquivo {
 		this.file = file;
 		this.nome = nome;
 	}
-	
+
 	public String getCaminhoPasta() {
 		return caminhoPasta;
 	}
