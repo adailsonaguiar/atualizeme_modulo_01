@@ -1,14 +1,15 @@
 package br.com.atualizador;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
 
-	private static String CAMINHO_APLICACAO = "C:\\Users\\adailsonacj\\aaa\\";
+//	private static String CAMINHO_APLICACAO = "C:\\Users\\adailsonacj\\aaa\\";
 	private static String NOME_PASTA_APLICACAO = "aaa";
-//	private static String CAMINHO_APLICACAO = "/home/adailson/aaa/";
+	private static String CAMINHO_APLICACAO = System.getProperty("user.home") + File.separator + "aaa" + File.separator;
 
 	public static void main(String[] args) {
 		File aplicacao = new File(CAMINHO_APLICACAO);
@@ -22,6 +23,14 @@ public class App {
 			System.out.println(ar);
 		}
 		excluirArquivosNaoContidosNoServidor(splitExclusao);
+
+		try {
+			Runtime.getRuntime().exec("java -jar " + CAMINHO_APLICACAO + "SicapEstado.jar ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.exit(0);
 	}
 
 	public static List<String> listaCaminhos(File dir) {
