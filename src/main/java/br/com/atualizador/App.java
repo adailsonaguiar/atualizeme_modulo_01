@@ -7,11 +7,13 @@ import java.util.List;
 
 public class App {
 
-	private static String NOME_PASTA_APLICACAO = "aaa";
-	private static String CAMINHO_APLICACAO = ".";
+	private static String NOME_PASTA_APLICACAO = null;
+	private static String CAMINHO_APLICACAO = System.getProperty("user.dir");
 
 	public static void main(String[] args) {
 		File aplicacao = new File(CAMINHO_APLICACAO);
+
+		NOME_PASTA_APLICACAO = aplicacao.getName();
 
 		renomearArquivosTemp(listaCaminhos(aplicacao));
 
