@@ -7,9 +7,8 @@ import java.util.List;
 
 public class App {
 
-//	private static String CAMINHO_APLICACAO = "C:\\Users\\adailsonacj\\aaa\\";
 	private static String NOME_PASTA_APLICACAO = "aaa";
-	private static String CAMINHO_APLICACAO = System.getProperty("user.home") + File.separator + "aaa" + File.separator;
+	private static String CAMINHO_APLICACAO = ".";
 
 	public static void main(String[] args) {
 		File aplicacao = new File(CAMINHO_APLICACAO);
@@ -18,19 +17,14 @@ public class App {
 
 		excluirArquivosNaoContidosNoServidor(args);
 
-		String[] splitExclusao = args[0].split("%30");
-		for (String ar : splitExclusao) {
-			System.out.println(ar);
+		if (args.length > 0) {
+			String[] splitExclusao = args[0].split("%30");
+			for (String ar : splitExclusao) {
+				System.out.println(ar);
+			}
+			excluirArquivosNaoContidosNoServidor(splitExclusao);
 		}
-		excluirArquivosNaoContidosNoServidor(splitExclusao);
-
-		try {
-			Runtime.getRuntime().exec("java -jar " + CAMINHO_APLICACAO + "SicapEstado.jar ");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.exit(0);
+		abrirSicap();
 	}
 
 	public static List<String> listaCaminhos(File dir) {
@@ -76,5 +70,15 @@ public class App {
 				fi.delete();
 			}
 		}
+	}
+
+	public static void abrirSicap() {
+		try {
+			Runtime.getRuntime().exec("java -jar " + CAMINHO_APLICACAO + "SicapEstado0.0.5-BETA.jar ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.exit(0);
 	}
 }
