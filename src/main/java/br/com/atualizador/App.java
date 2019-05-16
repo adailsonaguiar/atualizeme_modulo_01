@@ -9,6 +9,7 @@ public class App {
 
 	private static String NOME_PASTA_APLICACAO = null;
 	private static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator;
+//	public static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator + "test" + File.separator;
 
 	public static void main(String[] args) {
 		File aplicacao = new File(CAMINHO_APLICACAO);
@@ -17,7 +18,7 @@ public class App {
 
 		renomearArquivosTemp(listaCaminhos(aplicacao));
 
-		excluirArquivosNaoContidosNoServidor(args);
+//		excluirArquivosNaoContidosNoServidor(args);
 
 		if (args.length > 0) {
 			String[] splitExclusao = args[0].split("%30");
@@ -26,6 +27,7 @@ public class App {
 			}
 			excluirArquivosNaoContidosNoServidor(splitExclusao);
 		}
+
 		abrirSicap();
 	}
 
@@ -68,13 +70,15 @@ public class App {
 	public static void excluirArquivosNaoContidosNoServidor(String[] arquivosExlusao) {
 		for (String dir : arquivosExlusao) {
 			File fi = new File(CAMINHO_APLICACAO + dir.replace("%20", " "));
-			if (!fi.getName().equals("MD5.txt")) {
-				fi.delete();
+			boolean verify = false;
+			if (!fi.getName().equals("MD5.txt") && fi.exists() && !verify) {
+				verify = fi.delete();
 			}
 		}
 	}
 
 	public static void abrirSicap() {
+		System.out.println(CAMINHO_APLICACAO);
 		try {
 			Runtime.getRuntime().exec("java -jar " + CAMINHO_APLICACAO + "SicapEstado0.0.6-BETA.jar ");
 		} catch (IOException e) {
