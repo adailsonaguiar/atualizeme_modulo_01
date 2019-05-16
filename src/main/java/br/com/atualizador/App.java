@@ -8,7 +8,8 @@ import java.util.List;
 public class App {
 
 	private static String NOME_PASTA_APLICACAO = null;
-	private static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator;
+//	private static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator;
+	public static String CAMINHO_APLICACAO = "C:\\Users\\adailsonacj\\aaa\\";
 //	public static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator + "test" + File.separator;
 
 	public static void main(String[] args) {
@@ -58,7 +59,7 @@ public class App {
 				File arquivoTemporario = new File(CAMINHO_APLICACAO + arq);
 				File arquivoNovo = new File(arquivoTemporario.getParent() + File.separator + nomeNovo[1]);
 				if (arquivoNovo.exists()) {
-					arquivoNovo.delete();
+					excluirArquivo(arquivoNovo);
 				}
 				arquivoTemporario.renameTo(arquivoNovo);
 			}
@@ -68,10 +69,14 @@ public class App {
 	public static void excluirArquivosNaoContidosNoServidor(String[] arquivosExlusao) {
 		for (String dir : arquivosExlusao) {
 			File fi = new File(CAMINHO_APLICACAO + dir.replace("%20", " "));
-			boolean verify = false;
-			if (!fi.getName().equals("MD5.txt") && fi.exists() && !verify) {
-				verify = fi.delete();
-			}
+			excluirArquivo(fi);
+		}
+	}
+
+	public static void excluirArquivo(File fi) {
+		boolean verify = false;
+		if (!fi.getName().equals("MD5.txt") && fi.exists() && !verify) {
+			verify = fi.delete();
 		}
 	}
 
