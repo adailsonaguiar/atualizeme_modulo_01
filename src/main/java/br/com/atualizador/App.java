@@ -8,9 +8,8 @@ import java.util.List;
 public class App {
 
 	private static String NOME_PASTA_APLICACAO = null;
-//	private static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator;
-	public static String CAMINHO_APLICACAO = "C:\\Users\\adailsonacj\\aaa\\";
-//	public static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator + "test" + File.separator;
+	private static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator;
+//	public static String CAMINHO_APLICACAO = "C:\\Users\\adailsonacj\\aaa\\";
 
 	public static void main(String[] args) {
 		File aplicacao = new File(CAMINHO_APLICACAO);
