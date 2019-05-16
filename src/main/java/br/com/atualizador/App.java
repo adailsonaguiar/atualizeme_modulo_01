@@ -18,8 +18,6 @@ public class App {
 
 		renomearArquivosTemp(listaCaminhos(aplicacao));
 
-//		excluirArquivosNaoContidosNoServidor(args);
-
 		if (args.length > 0) {
 			String[] splitExclusao = args[0].split("%30");
 			for (String ar : splitExclusao) {
