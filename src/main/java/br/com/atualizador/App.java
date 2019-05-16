@@ -8,7 +8,7 @@ import java.util.List;
 public class App {
 
 	private static String NOME_PASTA_APLICACAO = null;
-	private static String CAMINHO_APLICACAO = System.getProperty("user.dir");
+	private static String CAMINHO_APLICACAO = System.getProperty("user.dir") + File.separator;
 
 	public static void main(String[] args) {
 		File aplicacao = new File(CAMINHO_APLICACAO);
@@ -76,7 +76,7 @@ public class App {
 
 	public static void abrirSicap() {
 		try {
-			Runtime.getRuntime().exec("java -jar " + CAMINHO_APLICACAO + "SicapEstado0.0.5-BETA.jar ");
+			Runtime.getRuntime().exec("java -jar " + CAMINHO_APLICACAO + "SicapEstado0.0.6-BETA.jar ");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
